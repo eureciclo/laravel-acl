@@ -1,5 +1,5 @@
 {
-  "name": "signes/acl",
+  "name": "epscavalcante/laravel-acl",
   "description": "Advanced ACL for Laravel",
   "keywords": [
     "laravel",
@@ -7,12 +7,12 @@
     "groups",
     "roles"
   ],
-  "homepage": "https://github.com/signes-pl/laravel-acl",
+  "homepage": "https://github.com/epscavalcante/laravel-acl",
   "license": "MIT",
   "authors": [
     {
-      "name": "Grzesiecki",
-      "email": "pawel.grzesiecki@signes.pl"
+      "name": "Eduardo",
+      "email": "eduardo.ps.cavalcante@gmail.com"
     }
   ],
   "require-dev": {
