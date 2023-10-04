@@ -40,7 +40,7 @@ class EloquentAclRepositoryTest extends TestCase
     /**
      * Set up repository to tests
      */
-    public function setUp()
+    public function setUp(): void
     {
         parent::setUp();
 
@@ -58,7 +58,7 @@ class EloquentAclRepositoryTest extends TestCase
     /**
      * Tear down environment after tests
      */
-    public function tearDown()
+    public function tearDown(): void
     {
         $this->artisan(
             'migrate:rollback',
