@@ -317,14 +317,14 @@ abstract class AclManager
         /**
          * Check if user have root access (user is member of role with special filter)
          */
-        if (isset($permissions['_special.root']) && $permissions['_special.root'] === true) {
+        if (isset($permissions['_special']['root']) && $permissions['_special']['root'] === true) {
             return true;
         }
 
         /**
          * Check if user is blocked (user is member of role with special filter)
          */
-        if (isset($permissions['_special.deny']) && $permissions['_special.deny'] === true) {
+        if (isset($permissions['_special']['deny']) && $permissions['_special']['deny'] === true) {
             return false;
         }
 
