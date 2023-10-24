@@ -1,27 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<phpunit backupGlobals="false"
-         backupStaticAttributes="false"
-         bootstrap="vendor/autoload.php"
-         colors="true"
-         convertErrorsToExceptions="true"
-         convertNoticesToExceptions="true"
-         convertWarningsToExceptions="true"
-         processIsolation="false"
-         stopOnFailure="true"
-        >
-    <testsuites>
-        <testsuite name="all">
-            <directory>tests/</directory>
-        </testsuite>
-    </testsuites>
-
-    <filter>
-        <whitelist processUncoveredFilesFromWhitelist="true">
-            <directory suffix=".php">src/Acl</directory>
-            <exclude>
-                <file>src/Acl/AclServiceProvider.php</file>
-                <file>src/Acl/Facades/Acl.php</file>
-            </exclude>
-        </whitelist>
-    </filter>
+<phpunit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" backupGlobals="false" backupStaticAttributes="false" bootstrap="vendor/autoload.php" colors="true" convertErrorsToExceptions="true" convertNoticesToExceptions="true" convertWarningsToExceptions="true" processIsolation="false" stopOnFailure="true" xsi:noNamespaceSchemaLocation="https://schema.phpunit.de/9.3/phpunit.xsd">
+  <coverage processUncoveredFiles="true">
+    <include>
+      <directory suffix=".php">src/Acl</directory>
+    </include>
+    <exclude>
+      <file>src/Acl/AclServiceProvider.php</file>
+      <file>src/Acl/Facades/Acl.php</file>
+    </exclude>
+  </coverage>
+  <testsuites>
+    <testsuite name="all">
+      <directory>tests/</directory>
+    </testsuite>
+  </testsuites>
 </phpunit>

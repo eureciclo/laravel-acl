@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<phpunit backupGlobals="false"
+         backupStaticAttributes="false"
+         bootstrap="vendor/autoload.php"
+         colors="true"
+         convertErrorsToExceptions="true"
+         convertNoticesToExceptions="true"
+         convertWarningsToExceptions="true"
+         processIsolation="false"
+         stopOnFailure="true"
+        >
+    <testsuites>
+        <testsuite name="all">
+            <directory>tests/</directory>
+        </testsuite>
+    </testsuites>
+
+    <filter>
+        <whitelist processUncoveredFilesFromWhitelist="true">
+            <directory suffix=".php">src/Acl</directory>
+            <exclude>
+                <file>src/Acl/AclServiceProvider.php</file>
+                <file>src/Acl/Facades/Acl.php</file>
+            </exclude>
+        </whitelist>
+    </filter>
+</phpunit>
