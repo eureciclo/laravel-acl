@@ -3,7 +3,8 @@
 namespace Signes\Acl;
 
 use Mockery;
-use PHPUnit_Framework_TestCase;
+use PHPUnit\Framework\TestCase as PHPUnit_Framework_TestCase;
+
 
 /**
  * Class TestCase
@@ -13,7 +14,7 @@ class TestCase extends PHPUnit_Framework_TestCase
     /**
      * Tear down environment after tests
      */
-    public function tearDown()
+    public function tearDown(): void
     {
         Mockery::close();
         parent::tearDown();
