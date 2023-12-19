@@ -155,9 +155,16 @@ class AclManagerTest extends TestCase
     public function dataCompareResourceWithPermissions()
     {
         return [
-            [[], ['_special.root' => true], true],
-            [[], ['_special.deny' => true], false],
-            [[], ['_special.deny' => true, '_special.root' => true], true],
+            [
+                [],
+                ['_special' => ['root' => true]],
+                true
+            ],
+            [
+                [],
+                ['_special' => ['deny' => true]],
+                false
+            ],
             [
                 ['area' => 'ar2', 'permission' => 'p2', 'actions' => []],
                 ['ar1' => ['p1' => []]],
