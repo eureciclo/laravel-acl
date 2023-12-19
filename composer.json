@@ -16,7 +16,7 @@
     }
   ],
   "require-dev": {
-    "phpunit/phpunit": "^7.5",
+    "phpunit/phpunit": "^8.5.8|^9.3.3",
     "orchestra/testbench": "^3.1.0",
     "squizlabs/php_codesniffer": "^2.5.1",
     "phpmd/phpmd" : "^2.3.2",
@@ -27,7 +27,8 @@
     "illuminate/support": "^6.20.43",
     "illuminate/container": "^6.20.43",
     "illuminate/database": "^6.20.43",
-    "illuminate/events": "^6.20.43"
+    "illuminate/events": "^6.20.43",
+    "laravel/helpers": "1.2.0"
   },
   "autoload": {
     "psr-4": {
