@@ -28,7 +28,7 @@
     "illuminate/container": "^7.29.3",
     "illuminate/database": "^7.29.3",
     "illuminate/events": "^7.29.3",
-    "laravel/helpers": "1.2.0"
+    "laravel/helpers": "^1.6"
   },
   "autoload": {
     "psr-4": {
