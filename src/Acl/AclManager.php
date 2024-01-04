@@ -309,30 +309,32 @@ abstract class AclManager
      *
      * @param array $resourceMap
      * @param array $permissions
+     * @param bool $checkSpecialPermission
      * @return bool
      */
-    protected function compareResourceWithPermissions(array $resourceMap, array $permissions)
+    protected function compareResourceWithPermissions(array $resourceMap, array $permissions, bool $checkSpecialPermission = false)
     {
+        if ($checkSpecialPermission) {
+            /**
+             * Check if user have root access (user is member of role with special filter)
+             */
+            if (isset($permissions['_special']['root']) && $permissions['_special']['root'] === true) {
+                return true;
+            }
 
-        /**
-         * Check if user have root access (user is member of role with special filter)
-         */
-        if (isset($permissions['_special']['root']) && $permissions['_special']['root'] === true) {
-            return true;
-        }
-
-        /**
-         * Check if user is blocked (user is member of role with special filter)
-         */
-        if (isset($permissions['_special']['deny']) && $permissions['_special']['deny'] === true) {
-            return false;
+            /**
+             * Check if user is blocked (user is member of role with special filter)
+             */
+            if (isset($permissions['_special']['deny']) && $permissions['_special']['deny'] === true) {
+                return false;
+            }
         }
 
         /**
          * First we have to check access to area and permission.
          * If user do not have access to this part, we skip check actions and return false.
          */
-        $hasAreaAccess = isset($permissions[$resourceMap['area']]);
+        $hasAreaAccess = isset($resourceMap['area']) && isset($permissions[$resourceMap['area']]);
         $hasPermissionAccess = $hasAreaAccess && isset($permissions[$resourceMap['area']][$resourceMap['permission']]);
         if (!$hasAreaAccess || !$hasPermissionAccess) {
             return false;

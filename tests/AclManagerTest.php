@@ -141,10 +141,11 @@ class AclManagerTest extends TestCase
      *
      * @dataProvider dataCompareResourceWithPermissions
      */
-    public function testCompareResourceWithPermissions($resourceMap, $permission, $expectedResult)
+    public function testCompareResourceWithPermissions($resourceMap, $permission, $checkSpecialpermission, $expectedResult)
     {
         $object = $this->getMockForTest();
-        $this->assertEquals($expectedResult, $object->compareResourceWithPermissions($resourceMap, $permission));
+        // dd($resourceMap, $permission, $checkSpecialpermission, $expectedResult);
+        $this->assertEquals($expectedResult, $object->compareResourceWithPermissions($resourceMap, $permission, $checkSpecialpermission));
     }
 
     /**
@@ -158,41 +159,49 @@ class AclManagerTest extends TestCase
             [
                 [],
                 ['_special' => ['root' => true]],
+                true,
                 true
             ],
             [
                 [],
                 ['_special' => ['deny' => true]],
+                false,
                 false
             ],
             [
                 ['area' => 'ar2', 'permission' => 'p2', 'actions' => []],
                 ['ar1' => ['p1' => []]],
-                false
+                false,
+                false,
             ],
             [
                 ['area' => 'ar1', 'permission' => 'p1', 'actions' => []],
                 ['ar1' => ['p1' => []]],
+                false,
                 true
             ],
             [
                 ['area' => 'ar1', 'permission' => 'p1', 'actions' => ['a1', 'a2', 'a3']],
                 ['ar1' => ['p1' => ['a1', 'a2', 'a3']]],
+                false,
                 true
             ],
             [
                 ['area' => 'ar1', 'permission' => 'p1', 'actions' => ['a1', 'a2', 'a3']],
                 ['ar1' => ['p1' => ['a1', 'a2', 'a3', 'a4']]],
+                false,
                 true
             ],
             [
                 ['area' => 'ar1', 'permission' => 'p1', 'actions' => ['a1', 'a2', 'a3']],
                 ['ar1' => ['p1' => ['a1', 'a3']]],
+                false,
                 false
             ],
             [
                 ['area' => 'ar1', 'permission' => 'p1', 'actions' => ['a1', 'a2']],
                 ['ar1' => ['p1' => ['a1', 'a2']], '_special' => ['removed' => ['ar1' => ['p1' => ['a1']]]]],
+                false,
                 false
             ]
         ];
