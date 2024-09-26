@@ -10,7 +10,7 @@ namespace Signes\Acl\Contract;
 interface PermissionInterface
 {
     /**
-     * Set Permission are
+     * Set Permission area
      *
      * @param string $area , area name
      * @return $this
