@@ -295,8 +295,10 @@ class EloquentAclRepository implements AclRepository
         $actions = []
     ) {
         try {
-            $actions = ($actions === true) ? $permission->getActions() : serialize($actions);
-            $entity->getPermissions()->attach($permission->getAttribute('id'), ['actions' => $actions]);
+            $actions = ($actions === true) ? $permission->getActions() : $actions;
+            $entity->getPermissions()->attach($permission->getAttribute('id'), [
+                'actions' => serialize($actions),
+            ]);
         } catch (Exception $e) {
             throw new DuplicateEntryException($e->getMessage());
         }
