@@ -18,10 +18,10 @@ class Acl extends AclManager
      * Check if resource is available
      *
      * @param string $resource    , resource identifier
-     * @param UserInterface $user , user object
+     * @param ?UserInterface $user , user object
      * @return bool
      */
-    public function isAllow($resource, UserInterface $user = null)
+    public function isAllow($resource, ?UserInterface $user = null)
     {
         $this->ensureUser($user);
 
