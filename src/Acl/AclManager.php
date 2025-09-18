@@ -96,7 +96,8 @@ abstract class AclManager
          * Before we ask DB to collect permissions array, let's check
          * if we have required information's in cache.
          */
-        $cachekey = 'acl:user:' . $this->currentUser->getKeyName();
+        $keyName = $this->currentUser->getKeyName();
+        $cachekey = 'acl:user:' . $this->currentUser->{$keyName};
         if (\Cache::has($cachekey)) {
             return \Cache::get($cachekey);
         }
