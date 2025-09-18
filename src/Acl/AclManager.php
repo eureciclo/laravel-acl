@@ -56,9 +56,9 @@ abstract class AclManager
      * take user from \Auth library. If it will fail,
      * take Guest account.
      *
-     * @param UserInterface $user
+     * @param ?UserInterface $user
      */
-    protected function ensureUser(UserInterface $user = null)
+    protected function ensureUser(?UserInterface $user = null)
     {
         if ($user) {
             $this->setUser($user);
