@@ -111,7 +111,7 @@ abstract class AclManager
          *
          * @todo Add better way to cache permissions
          */
-        \Cache::put($cachekey, $permissionsArray, \Config::get('eureciclo.acl.cache_time'));
+        \Cache::put($cachekey, $permissionsArray, now()->addMinutes(\Config::get('eureciclo.acl.cache_time', 60)));
 
         return $permissionsArray;
 
