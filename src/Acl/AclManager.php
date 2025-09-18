@@ -95,13 +95,11 @@ abstract class AclManager
         /**
          * Before we ask DB to collect permissions array, let's check
          * if we have required information's in cache.
-         *
-         * @todo Add better way to cache permissions
          */
-        //$user_cache_key = 'acl:user:' . $this->currentUser->id;
-        //if (\Cache::has($user_cache_key)) {
-        //    return \Cache::get($user_cache_key);
-        //}
+        $cachekey = 'acl:user:' . $this->currentUser->id;
+        if (\Cache::has($cachekey)) {
+            return \Cache::get($cachekey);
+        }
 
         /**
          * Collect all user permissions based on their personal access, groups and roles
@@ -113,7 +111,7 @@ abstract class AclManager
          *
          * @todo Add better way to cache permissions
          */
-        //\Cache::put($user_cache_key, $permissions_array, \Config::get('signes-acl::acl.cache_time'));
+        \Cache::put($cachekey, $permissionsArray, \Config::get('eureciclo.acl.cache_time'));
 
         return $permissionsArray;
 
