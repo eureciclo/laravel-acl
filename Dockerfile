@@ -1,4 +1,4 @@
-FROM php:8.0.30-fpm-alpine3.16
+FROM php:8.3-fpm-alpine3.21
 RUN apk add --no-cache openssl \
             bash
             # freetype-dev \

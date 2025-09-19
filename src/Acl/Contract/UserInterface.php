@@ -26,4 +26,11 @@ interface UserInterface extends HavingPermissionsInterface, HavingRolesInterface
      * @return $this
      */
     public function setGroup(GroupInterface $group);
+
+    /**
+     * Get the value of the model's primary key.
+     *
+     * @return mixed
+     */
+    public function getKey();
 }
