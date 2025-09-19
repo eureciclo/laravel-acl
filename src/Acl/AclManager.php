@@ -96,8 +96,7 @@ abstract class AclManager
          * Before we ask DB to collect permissions array, let's check
          * if we have required information's in cache.
          */
-        $keyName = $this->currentUser->getKeyName();
-        $cachekey = 'acl:user:' . $this->currentUser->{$keyName};
+        $cachekey = 'acl:user:' . $this->currentUser->getKey();
         if (\Cache::has($cachekey)) {
             return \Cache::get($cachekey);
         }
@@ -112,7 +111,7 @@ abstract class AclManager
          *
          * @todo Add better way to cache permissions
          */
-        \Cache::put($cachekey, $permissionsArray, now()->addMinutes(\Config::get('eureciclo.acl.cache_time', 60)));
+        \Cache::put($cachekey, $permissionsArray, now()->addMinutes(\Config::get('acl.cache_time', 60)));
 
         return $permissionsArray;
 

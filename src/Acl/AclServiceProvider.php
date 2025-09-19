@@ -56,5 +56,8 @@ class AclServiceProvider extends ServiceProvider
 
         // Publish database models
         $this->publishes([__DIR__ . '/../Publish/Models/' => base_path('/app/Models')], 'models');
+
+        // Config file
+        $this->publishes([__DIR__ . '/../Publish/Config/acl.php' => config_path('acl.php')], 'config');
     }
 }
